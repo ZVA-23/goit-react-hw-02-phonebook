@@ -69,10 +69,8 @@ state = {
   contacts: [],
   filter: ''
 }
-
 Four components are enough: add contact form, contact list contact list, contact list item, and search filter.
 After the refactoring, the root component of the application will look like this.
-
 <div>
   <h1>Phonebook</h1>
   <ContactForm ... />
@@ -81,14 +79,8 @@ After the refactoring, the root component of the application will look like this
   <Filter ... />
   <ContactList ... />
 </div>
-
 Step 5.
 Deny the user the ability to add contacts whose names are already in the phonebook. If you try to do so, print alert with a warning.
-
-
 Step 6
 Extend the functionality of the app by allowing the user to delete previously saved contacts.
-
-
-
 ```
