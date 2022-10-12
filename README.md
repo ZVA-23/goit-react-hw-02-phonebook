@@ -13,7 +13,8 @@ refresh). Use this input markup with built-in validation for the contact name.
   type="text"
   name="name"
   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan."
+  title="Name may contain only letters, apostrophe, dash and spaces. For 
+  example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan."
   required
 />
 
@@ -26,12 +27,6 @@ Each contact must be an object with properties `name` and `id`. To generate
 identifiers, use any suitable package, e.g.
 [nanoid](https://www.npmjs.com/package/nanoid). After completing this step, the
 application should look something like this.
-
-<Image
-  src="img/hw-02/phonebook/step-1.png"
-  alt="component preview"
-  maxWidth={960}
-/>
 
 Step 2. Expand the functionality of the app by allowing users to add numbers
 phone numbers. To do this, add `<input type="tel">` to the form, and a property
@@ -69,8 +64,14 @@ state = {
   contacts: [],
   filter: ''
 }
-Four components are enough: add contact form, contact list contact list, contact list item, and search filter.
-After the refactoring, the root component of the application will look like this.
+```
+
+Four components are enough: add contact form, contact list contact list, contact
+list item, and search filter.
+
+After the refactoring, the root component of the application will look like
+this.
+
 <div>
   <h1>Phonebook</h1>
   <ContactForm ... />
@@ -79,8 +80,9 @@ After the refactoring, the root component of the application will look like this
   <Filter ... />
   <ContactList ... />
 </div>
-Step 5.
-Deny the user the ability to add contacts whose names are already in the phonebook. If you try to do so, print alert with a warning.
-Step 6
-Extend the functionality of the app by allowing the user to delete previously saved contacts.
-```
+
+Step 5. Deny the user the ability to add contacts whose names are already in the
+phonebook. If you try to do so, print alert with a warning.
+
+Step 6. Extend the functionality of the app by allowing the user to delete
+previously saved contacts.
