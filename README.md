@@ -9,7 +9,7 @@ current step, implement adding a contact name and displaying a list of contacts.
 The application should not save contacts between different sessions (page
 refresh). Use this input markup with built-in validation for the contact name.
 
-``html <input
+<input
   type="text"
   name="name"
   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -19,8 +19,11 @@ refresh). Use this input markup with built-in validation for the contact name.
 
 The state held in the parent component <App> must necessarily be The following
 form, you can not add new properties.
-``bash state = { contacts: [], name: '' } Each contact must be an object with properties `name`and`id`.
-To generate identifiers, use any suitable package, e.g.
+
+``bash state = { contacts: [], name: '' }
+
+Each contact must be an object with properties `name` and `id`. To generate
+identifiers, use any suitable package, e.g.
 [nanoid](https://www.npmjs.com/package/nanoid). After completing this step, the
 application should look something like this.
 
