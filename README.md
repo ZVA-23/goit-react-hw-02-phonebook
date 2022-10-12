@@ -69,18 +69,6 @@ state = {
 Four components are enough: add contact form, contact list contact list, contact
 list item, and search filter.
 
-After the refactoring, the root component of the application will look like
-this.
-
-<div>
-  <h1>Phonebook</h1>
-  <ContactForm ... />
-
-  <h2>Contacts</h2>
-  <Filter ... />
-  <ContactList ... />
-</div>
-
 Step 5. Deny the user the ability to add contacts whose names are already in the
 phonebook. If you try to do so, print alert with a warning.
 
