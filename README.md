@@ -1,91 +1,91 @@
-**Read in other languages: [Русский](README.md), [Polska](README.pl.md),
-[English](README.en.md), [Spanish](README.es.md).**
+React 2nd homework PHONEBOOK
 
-# React homework template
+Contact Book.
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+Write an application to store your phonebook contacts.
 
-## Подготовка нового проекта
+Step 1 The application should consist of a form and a list of contacts. In the
+current step, implement adding a contact name and displaying a list of contacts.
+The application should not save contacts between different sessions (page
+refresh). Use this input markup with built-in validation for the contact name.
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Клонируй этот репозиторий.
-3. Измени имя папки с `react-homework-template` на имя своего проекта.
-4. Создай новый пустой репозиторий на GitHub.
-5. Открой проект в VSCode, запусти терминал и свяжи проект с GitHub-репозиторием
-   [по инструкции](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Установи базовые зависимости проекта командой `npm install`.
-7. Запусти режим разработки, выполнив команду `npm start`.
-8. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+``html <input
+  type="text"
+  name="name"
+  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan."
+  required
+/>
 
-## Деплой
+The state held in the parent component <App> must necessarily be The following
+form, you can not add new properties.
+``bash state = { contacts: [], name: '' } Each contact must be an object with properties `name`and`id`.
+To generate identifiers, use any suitable package, e.g.
+[nanoid](https://www.npmjs.com/package/nanoid). After completing this step, the
+application should look something like this.
 
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
+<Image
+  src="img/hw-02/phonebook/step-1.png"
+  alt="component preview"
+  maxWidth={960}
+/>
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
+Step 2. Expand the functionality of the app by allowing users to add numbers
+phone numbers. To do this, add `<input type="tel">` to the form, and a property
+to store its value in the state. ``bash state = { contacts: [], name: '',
+number: '' } Use this markup of an instance with built-in validation for the
+contact number.
+
+<input
+  type="tel"
+  name="number"
+  pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+  required
+/>
+
+Step 3. Add a search field that you can use to filter your contact list by name.
+The search field is a formless intuplet whose value is written to the state
+(controlled item). The filtering logic should be case insensitive. state = {
+contacts: [], filter: '', name: '', number: '' } component preview When we work
+on new functionality, it can be convenient to hardcode some data into a state.
+This eliminates the need to manually enter data in the interface to test the new
+functionality. For example, you can use this initial state. ``bash state = {
+contacts: [ {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'}, {id:
+'id-2', name: 'Hermione Kline', number: '443-89-12'}, {id: 'id-3', name: 'Eden
+Clements', number: '645-17-79'}, {id: 'id-4', name: 'Annie Copeland', number:
+'227-91-26'}, ], filter: '', name: '', number: '' }
+
+Step 4. If your application is implemented in a single component `<App>`,
+perform refactoring by separating the appropriate parts into separate
+components. In the state of the root component `<App>` will leave only the
+`contacts` and `filter` properties.
+
+```bash
+state = {
+  contacts: [],
+  filter: ''
+}
+
+Four components are enough: add contact form, contact list contact list, contact list item, and search filter.
+After the refactoring, the root component of the application will look like this.
+
+<div>
+  <h1>Phonebook</h1>
+  <ContactForm ... />
+
+  <h2>Contacts</h2>
+  <Filter ... />
+  <ContactList ... />
+</div>
+
+Step 5.
+Deny the user the ability to add contacts whose names are already in the phonebook. If you try to do so, print alert with a warning.
+
+
+Step 6
+Extend the functionality of the app by allowing the user to delete previously saved contacts.
+
+
+
 ```
-
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
-
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Статус деплоя
-
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
-
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
-
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
-
-![Deployment status](./assets/status.png)
-
-### Живая страница
-
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
-
-### Маршрутизация
-
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеши в начале и конце строки
-обязательны.
-
-```jsx
-<BrowserRouter basename="/your_repo_name/">
-  <App />
-</BrowserRouter>
-```
-
-## Как это работает
-
-![How it works](./assets/how-it-works.png)
-
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
